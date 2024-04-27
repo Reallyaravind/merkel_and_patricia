@@ -116,8 +116,8 @@ While accessing we return the value of the last mapping for the key “DATA” a
         Valid
         Element found at: 2
         Not Valid
-    ![](images/Merkel%20Tree%20op%20valid.png)
-    ![](images/Merkel%20Tree%20op%20invalid.png)
+  ![](images/Merkel%20Tree%20op%20valid.png)
+  ![](images/Merkel%20Tree%20op%20invalid.png)
 ### Patricia Tries
         $ node test
         Transaction {
@@ -132,6 +132,6 @@ While accessing we return the value of the last mapping for the key “DATA” a
         null
         null
         false
-    1[](images/Patricia%20Tries%20op.png)
+  ![](images/Patricia%20Tries%20op.png)
 # Special Mention
 Thanks to @[kashishkhullar](https://github.com/kashishkhullar) Blog on Medium on this topic.
