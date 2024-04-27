@@ -1,4 +1,4 @@
-### Implementing Merkle Tree and Patricia Trie
+# Implementing Merkle Tree and Patricia Trie
 
 ## Introduction
 Merkle and Patricia are the two most popular data structures used in the Ethereum Blockchain with Bloom Filters very close behind it. This project covers the following:
@@ -36,7 +36,7 @@ Similarly the fourth layer is formed using the values of the third layer and so 
 The importance Merkel Trees is in its ability to verify data with efficiency. Given any data from the list we can verify in O(h) time complexity that this data is valid or not.
 
 
-# Suppose I received a data C from another server. Lets say this is C’. We want to verify C’
+### Suppose I received a data C from another server. Lets say this is C’. We want to verify C’
 
 - Find the position of the C’ in the list. Probably by searching by id.
 - Calculate the the hash of C’
@@ -44,7 +44,7 @@ The importance Merkel Trees is in its ability to verify data with efficiency. Gi
 - Repeat step 3 until we find the root
 - Compare the root with the previous root, if they match then C’
 
-### Patricia Tries
+## Patricia Tries
 Patricia Tries are n-ary trees which unlike Merkel Trees,is used for storage of data instead of verification.
 
 To simply put, Patricia Tries is a tree data structure in which all the data is store in the leaf nodes, where each non-leaf nodes is a character of a unique string identifying the data. Using the unique string we navigate through the character nodes and finally reach the data.
