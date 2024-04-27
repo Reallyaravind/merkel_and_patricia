@@ -28,7 +28,9 @@ The nodes in the layer after the second layer are contains the hash value of the
 If we have even number of nodes, we take 2 consecutive nodes and form the parent layer. But if we have odd number of nodes, we take two consecutive nodes until one is left to form the parent layer, and then we repeat the remaining node by copying the hash to the parent layer.
 
 
-Similarly the fourth layer is formed using the values of the third layer and so on.
+Similarly the fourth layer is formed using the values of the third layer .
+
+The final layer or the root of the Merkel Tree is formed by hash value of the last two nodes remaining in top most layer. In any case, odd or even leaf nodes, we will always have two nodes in the top most layer.
 
 ![](images/Merkel%20Tree.png)
 
@@ -43,6 +45,30 @@ The importance Merkel Trees is in its ability to verify data with efficiency. Gi
 - Calculate the value of the parent node by hashing the current node with its neighbor ( next if position is odd and previous if position in even) and set the parent as the current node.
 - Repeat step 3 until we find the root
 - Compare the root with the previous root, if they match then C’
+## Algorithm
+### Creation
+As already mentioned before, Merkel Tree are created by taking two nodes from each layer and hashing them to create the parent node. by representing the tree in matrix form we can mathematically write it as:
+
+
+            tree[i][j] = hash(tree[i+1][2j].hash + tree[i+1][2j+1].hash)
+        where,
+            j is the index of node in ith layer
+            0 ≤ i < tree.length
+            0 ≤ j < tree[i].length
+This makes the root of the tree available at tree[0][0]
+
+### Verification
+Verification is a bottom-up approach where we start from the data, find its hash and calculate the parent and continue this until we find the root. Mathematically, we can express it as follows:
+
+let position of the node to be verified be p
+then,
+        tree[i][⌊p/2⌋] = {
+        hash(tree[i+1][p].hash + tree[i+1][p+1].hash),   p is even
+        hash(tree[i+1][p].hash + tree[i+1][p-1].hash),   p is odd
+        }
+    where,
+        0 ≤ i < tree.length
+        0 ≤ p < tree[i].length
 
 ## Patricia Tries
 Patricia Tries are n-ary trees which unlike Merkel Trees,is used for storage of data instead of verification.
@@ -83,6 +109,28 @@ In this algorithm we create an empty key-value pair object, traverse the entire 
 
 While accessing we return the value of the last mapping for the key “DATA” and in deletion we just delete the leaf node for the given hash.
 
-
+## Output
+### Merkel Tree
+        Element found at: 2
+        Valid
+        Element found at: 2
+        Not Valid
+    ![](images/Merkel%20Tree%20op%20valid.png)
+    ![](images/Merkel%20Tree%20op%20invalid.png)
+### Patricia Tries
+        $ node test
+        Transaction {
+            to: 0.01106239432861833,
+            from: 0.774577364867872,
+            amount: 0.7140173399739937,
+            id: 0,
+            hash:
+            'e4bc0c48be1ad748af6dbc714ddf49d3b76643a491d068a5f1494c84b54971ad' 
+        }     
+        true
+        null
+        null
+        false
+    1[](images/Patricia%20Tries%20op.png)
 # Special Mention
 Thanks to @[kashishkhullar](https://github.com/kashishkhullar) Blog on Medium on this topic.
