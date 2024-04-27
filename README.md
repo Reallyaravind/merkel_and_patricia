@@ -62,13 +62,14 @@ Verification is a bottom-up approach where we start from the data, find its hash
 
 let position of the node to be verified be p
 then,
-        tree[i][⌊p/2⌋] = {
-        hash(tree[i+1][p].hash + tree[i+1][p+1].hash),   p is even
-        hash(tree[i+1][p].hash + tree[i+1][p-1].hash),   p is odd
-        }
-    where,
-        0 ≤ i < tree.length
-        0 ≤ p < tree[i].length
+
+          tree[i][⌊p/2⌋] = {
+            hash(tree[i+1][p].hash + tree[i+1][p+1].hash),   p is even
+            hash(tree[i+1][p].hash + tree[i+1][p-1].hash),   p is odd
+          }
+      where,
+          0 ≤ i < tree.length
+          0 ≤ p < tree[i].length
 
 ## Patricia Tries
 Patricia Tries are n-ary trees which unlike Merkel Trees,is used for storage of data instead of verification.
